@@ -1,0 +1,158 @@
+---
+title: 'StocksAI Report'
+subtitle: 'Exploration and Model Inspection'
+authors: 'Wienand & Maaike Omta'
+date: today
+
+
+format:
+  html:
+    self-contained: true
+    theme: [dark, darkly]
+    html-datatables: true
+    css: stocksai_app/css/custom.css
+    toc: true
+    toc-location: right
+    toc-title: "StocksAI Report"      
+    toc-expand: 3   # expand down to H3 (or 2 for H2)
+    number-sections: true
+    page-layout: full
+jupyter: python3
+
+execute:
+  echo: false        # run all chunks, show only their results
+  warning: false
+  message: false
+  df-print: paged
+  tbl-cap-location: top
+---
+
+```{python}
+# Global Variables
+import global_vars
+import plotly.io as pio
+```
+
+
+#######################
+# General Information #
+#######################
+
+```{python, echo = True}
+import pandas as pd
+general_table = pd.read_parquet(global_vars.TBL_GENERAL_PATH)
+general_table
+```
+
+
+#################
+# Feature Plots #
+#################
+
+Original and Engineered Features used for Machine Learning
+
+## Overlay Features
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_DENSITY_PATH)
+fig.show()
+#fig.show(config={"responsive": True, "displayModeBar": False, "displaylogo": False, "modeBarButtonsToAdd": ["toggleSpikelines", "resetScale2d"]})
+```
+
+## Distribution Features
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_DISTR_PATH)
+fig.show()
+```
+
+## Linearity Features
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_LINEARITY_PATH)
+fig.show()
+```
+
+
+#####################
+# Explorative Plots #
+#####################
+
+## Candle Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_CANDLE_PATH)
+fig.show()
+```
+
+## Area Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_AREA_PATH)
+fig.show()
+```
+
+
+################
+# Pre-ML Plots #
+################
+
+## Missing Data Heatmap
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_MISSING_PATH)
+fig.show()
+```
+
+## Correlation Heatmap
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_COR_HEATMAP_PATH)
+fig.show()
+```
+
+## Scree Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_SCREE_PATH)
+fig.show()
+```
+
+## Spider Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_SPIDER_PATH)
+fig.show()
+```
+
+## 3D Scatter Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_3D_SCATTER_PATH)
+fig.show()
+```
+
+## Class Balance Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_BALANCE_PATH)
+fig.show()
+```
+
+
+############
+# ML Plots #
+############
+
+## Feature Importance
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_IMPORTANCE_PATH)
+fig.show()
+```
+
+## Confusion Matrix
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_CONFUSION_PATH)
+fig.show()
+```
+
+## ROC Curve
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_ROC_PATH)
+fig.show()
+```
+
+## Contour Plot
+```{python, echo = True}
+fig = pio.read_json(global_vars.VIZ_CONTOUR_PATH)
+fig.show()
+```
